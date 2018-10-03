@@ -7,5 +7,5 @@ import io.reactivex.Single
 import javax.inject.Inject
 
 class TopRatedRepositoryImp @Inject constructor(private var topRatedStorageRemote: TopRatedStorageRemote) : TopRatedRepository {
-    override fun getTopRated(limit: Int, count: Int): Single<List<PostData?>> = topRatedStorageRemote.getTopRated(limit, count)!!.applyIOSchedulers()
+    override fun getTopRated(limit: Int, after: String): Single<List<PostData?>> = topRatedStorageRemote.getTopRated(limit, after)!!.applyIOSchedulers()
 }

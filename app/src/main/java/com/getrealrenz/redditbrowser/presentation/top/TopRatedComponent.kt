@@ -1,6 +1,7 @@
 package com.getrealrenz.redditbrowser.presentation.top
 
 import com.getrealrenz.redditbrowser.di.fragment.FragmentScope
+import com.getrealrenz.redditbrowser.presentation.MainRouter
 import dagger.Module
 import dagger.Provides
 import dagger.Subcomponent
@@ -20,5 +21,8 @@ interface TopRatedComponent : AndroidInjector<TopRatedFragment> {
     class TopRatedModule {
         @Provides
         fun providePresenter(presenter: TopRatedPresenter): TopRatedContract.Presenter = presenter
+
+        @Provides
+        fun provideRouter(mainRouter: MainRouter): TopRatedContract.Router = mainRouter
     }
 }

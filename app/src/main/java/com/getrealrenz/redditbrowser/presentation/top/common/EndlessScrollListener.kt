@@ -6,7 +6,7 @@ import io.reactivex.processors.PublishProcessor
 
 class EndlessScrollListener(var layoutManager: LinearLayoutManager,
                             var paginator: PublishProcessor<Int>) : RecyclerView.OnScrollListener() {
-    private val VISIBLE_THRESHOLD = 1
+    private val VISIBLE_THRESHOLD = 5
     private var pageNumber = 0
     private var totalItemCount = 0
     private var lastVisibleItem = 0

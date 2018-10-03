@@ -1,6 +1,5 @@
 package com.getrealrenz.redditbrowser.di.activity
 
-import java.lang.annotation.RetentionPolicy
 import javax.inject.Scope
 
 /**

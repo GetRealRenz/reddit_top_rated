@@ -10,8 +10,8 @@ import retrofit2.Response
 import javax.inject.Inject
 
 class TopRatedStorageRemote @Inject constructor(var redditService: RedditService) {
-    fun getTopRated(limit: Int, count: Int): Single<List<PostData?>>? {
-        return redditService.getTopRated(limit, count)
+    fun getTopRated(limit: Int, after: String): Single<List<PostData?>>? {
+        return redditService.getTopRated(limit, after)
                 .flatMap { t: Response<TopRatedResponse> ->
                     if (t.isSuccessful) {
                         Single.just(t.body()!!.data!!.children!!.map { it.data })

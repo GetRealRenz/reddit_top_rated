@@ -4,5 +4,5 @@ import com.getrealrenz.redditbrowser.data.entity.PostData
 import io.reactivex.Single
 
 interface TopRatedRepository {
-    fun getTopRated(limit: Int, count: Int): Single<List<PostData?>>
+    fun getTopRated(limit: Int, after: String): Single<List<PostData?>>
 }

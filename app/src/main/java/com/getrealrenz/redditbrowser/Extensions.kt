@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.graphics.Bitmap
 import android.graphics.drawable.Drawable
 import android.view.View
+import android.webkit.URLUtil
 import android.widget.ImageView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.DataSource
@@ -23,13 +24,8 @@ import java.lang.reflect.*
 /**
  * Created on 02.10.2018.
  */
-inline fun <reified T> Observable<T>.applyIOSchedulers(): Observable<T> =
-        this.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
 
 inline fun <reified T> Single<T>.applyIOSchedulers(): Single<T> =
-        this.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
-
-inline fun Completable.applyIOSchedulers(): Completable =
         this.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
 
 fun Type.simpleErasedName(): String {
@@ -47,7 +43,7 @@ fun Type.simpleErasedName(): String {
 
 @SuppressLint("CheckResult")
 fun ImageView.load(url: String?, placeholderId: Int = -1) {
-    if (url == null || url.isEmpty()) {
+    if (url == null || url.isEmpty()||URLUtil.isValidUrl(url).not()) {
         visibility = View.GONE
     }
     val requestBuilder = Glide.with(this).load(url)

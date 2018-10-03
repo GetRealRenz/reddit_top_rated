@@ -7,12 +7,16 @@ import com.getrealrenz.redditbrowser.databinding.ListItemTopRatedBinding
 import com.getrealrenz.redditbrowser.load
 import com.getrealrenz.redditbrowser.presentation.base.BaseRecyclerAdapter
 import com.getrealrenz.redditbrowser.presentation.base.BaseViewHolder
+import com.getrealrenz.redditbrowser.presentation.top.TopRatedContract
 
-class TopRatedAdapter constructor(var posts: MutableList<PostData?> = mutableListOf()) : BaseRecyclerAdapter<ListItemTopRatedBinding>() {
+class TopRatedAdapter constructor(var posts: MutableList<PostData?> = mutableListOf(),
+                                  var eventListener: TopRatedContract.Presenter) : BaseRecyclerAdapter<ListItemTopRatedBinding>() {
     override fun bindItem(holder: BaseViewHolder<ListItemTopRatedBinding>, position: Int) {
         holder.binding.apply {
             model = posts[position]
+            event = eventListener
             ivTopRatedIco.load(model?.thumbnail)
+            executePendingBindings()
         }
     }
 
@@ -21,21 +25,8 @@ class TopRatedAdapter constructor(var posts: MutableList<PostData?> = mutableLis
     override fun getItemCount() = posts.size
 
     fun setData(list: MutableList<PostData?>) {
-        val oldList = this.posts
+        val oldList = this.posts.size
         this.posts.addAll(list)
-
-        DiffUtil.calculateDiff(object : DiffUtil.Callback() {
-            override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
-                return oldList[oldItemPosition] === posts[newItemPosition]
-            }
-
-            override fun getOldListSize(): Int = oldList.size
-
-            override fun getNewListSize(): Int = posts.size
-
-            override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
-                return oldList[oldItemPosition] == posts[newItemPosition]
-            }
-        }).dispatchUpdatesTo(this)
+        notifyItemRangeInserted(oldList+1,posts.size)
     }
 }

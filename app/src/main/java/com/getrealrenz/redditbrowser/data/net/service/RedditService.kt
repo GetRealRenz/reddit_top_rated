@@ -8,6 +8,6 @@ import retrofit2.http.*
 interface RedditService {
     @GET("top.json")
     fun getTopRated(@Query("limit") limit: Int,
-                    @Query("count") count: Int): Single<Response<TopRatedResponse>>
+                    @Query("after") after: String): Single<Response<TopRatedResponse>>
 
 }

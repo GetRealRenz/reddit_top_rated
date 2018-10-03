@@ -10,11 +10,16 @@
         <variable
             name="model"
             type="com.getrealrenz.redditbrowser.data.entity.PostData" />
+
+        <variable
+            name="event"
+            type="com.getrealrenz.redditbrowser.presentation.top.TopRatedContract.Presenter" />
     </data>
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:onClick="@{()->event.onPostClicked(model.url)}">
 
         <ImageView
             android:id="@+id/ivTopRatedIco"
