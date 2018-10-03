@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="top_rated_ico_size">64dp</dimen>
+    <dimen name="top_rated_title_text_size">16sp</dimen>
+    <dimen name="top_rated_subtitle_text_size">16sp</dimen>
+    <dimen name="divider_height">1dp</dimen>
+</resources>

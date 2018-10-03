@@ -1,5 +1,6 @@
 package com.getrealrenz.redditbrowser.presentation.top
 
+import com.getrealrenz.redditbrowser.data.entity.PostData
 import com.getrealrenz.redditbrowser.presentation.base.BasePresenter
 
 /**
@@ -7,11 +8,11 @@ import com.getrealrenz.redditbrowser.presentation.base.BasePresenter
  */
 interface TopRatedContract {
     interface View {
-
+        fun showTopRated(topRated: List<PostData?>)
     }
 
     interface Presenter : BasePresenter<View> {
-
+        fun getTopRated()
     }
 
     interface EventListener {

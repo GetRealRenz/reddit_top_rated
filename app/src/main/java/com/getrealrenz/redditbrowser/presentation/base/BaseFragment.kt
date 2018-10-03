@@ -23,6 +23,10 @@ abstract class BaseFragment<B : ViewDataBinding> : DaggerFragment()
         return binding.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        viewCreated()
+    }
     private fun getLayoutRes(): Int {
         val fragmentLayoutName = (javaClass.genericSuperclass as ParameterizedType).actualTypeArguments[0]
                 .simpleErasedName()

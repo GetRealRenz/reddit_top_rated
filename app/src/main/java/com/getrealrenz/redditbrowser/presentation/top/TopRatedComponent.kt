@@ -12,10 +12,9 @@ import dagger.android.AndroidInjector
 @FragmentScope
 @Subcomponent(modules = arrayOf(TopRatedComponent.TopRatedModule::class))
 interface TopRatedComponent : AndroidInjector<TopRatedFragment> {
-    @Subcomponent.Builder
-    abstract class Builder : AndroidInjector.Builder<TopRatedFragment>() {
 
-    }
+    @Subcomponent.Builder
+    abstract class Builder : AndroidInjector.Builder<TopRatedFragment>()
 
     @Module
     class TopRatedModule {

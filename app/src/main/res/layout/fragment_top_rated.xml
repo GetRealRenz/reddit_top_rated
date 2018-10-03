@@ -3,7 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <android.support.v7.widget.RecyclerView
+        android:id="@+id/rvPostsContainer"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".presentation.top.TopRatedFragment"/>
+        android:orientation="vertical"
+        tools:context=".presentation.top.TopRatedFragment"
+        tools:listitem="@layout/list_item_top_rated" />
 </layout>

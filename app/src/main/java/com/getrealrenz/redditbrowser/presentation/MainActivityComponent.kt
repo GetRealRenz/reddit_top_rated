@@ -30,7 +30,7 @@ interface MainActivityComponent : AndroidInjector<MainActivity> {
         fun provideActivit(activity: MainActivity): AppCompatActivity = activity
     }
 
-    @Module
+    @Module(subcomponents = arrayOf(TopRatedComponent::class))
     abstract class FragmentBindingsModule {
         @Binds
         @IntoMap

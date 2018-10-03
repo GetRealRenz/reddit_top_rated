@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.text.format.DateUtils" />
+
+        <variable
+            name="model"
+            type="com.getrealrenz.redditbrowser.data.entity.PostData" />
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/ivTopRatedIco"
+            android:layout_width="@dimen/top_rated_ico_size"
+            android:layout_height="@dimen/top_rated_ico_size"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@tools:sample/avatars" />
+
+        <TextView
+            android:id="@+id/tvTopRatedTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:text="@{model.title}"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/top_rated_title_text_size"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/ivTopRatedIco"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="@tools:sample/full_names" />
+
+        <TextView
+            android:id="@+id/tvTopRatedSubreddit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="@{model.subreddit}"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/top_rated_subtitle_text_size"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/tvTopRatedTitle"
+            app:layout_constraintTop_toBottomOf="@+id/tvTopRatedTitle"
+            tools:text="@tools:sample/first_names" />
+
+        <TextView
+            android:id="@+id/tvTopRatedPostedBy"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:text="@{@string/posted_by(model.authorName)}"
+            android:textSize="@dimen/top_rated_subtitle_text_size"
+            app:layout_constraintEnd_toStartOf="@+id/topRatedCreated"
+            app:layout_constraintStart_toStartOf="@+id/tvTopRatedSubreddit"
+            app:layout_constraintTop_toBottomOf="@+id/tvTopRatedSubreddit"
+            tools:text="Posted by UYSERNAME" />
+
+        <TextView
+            android:id="@+id/topRatedCreated"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:text="@{DateUtils.getRelativeTimeSpanString(model.created)}"
+            android:textSize="@dimen/top_rated_subtitle_text_size"
+            android:textStyle="italic"
+            app:layout_constraintBottom_toBottomOf="@+id/tvTopRatedPostedBy"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tvTopRatedPostedBy"
+            tools:text="9 hours ago" />
+
+        <TextView
+            android:id="@+id/topRatedComments"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:drawableStart="@drawable/ic_comments"
+            android:drawablePadding="8dp"
+            android:gravity="center"
+            android:text="@{@string/comments(model.comments)}"
+            app:layout_constraintBottom_toBottomOf="@id/divider"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvTopRatedPostedBy"
+            tools:text="5556 comments" />
+
+        <TextView
+            android:id="@+id/topRatedThumbUp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:drawableStart="@drawable/ic_thumbs_up_down"
+            android:drawablePadding="8dp"
+            android:gravity="center"
+            android:text="@{String.valueOf(model.ups)}"
+            app:layout_constraintBottom_toBottomOf="@+id/topRatedComments"
+            app:layout_constraintStart_toEndOf="@+id/topRatedComments"
+            app:layout_constraintTop_toTopOf="@+id/topRatedComments"
+            tools:text="1.1k" />
+
+        <View
+            android:id="@+id/divider"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/divider_height"
+            android:background="@android:color/darker_gray"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+    </android.support.constraint.ConstraintLayout>
+</layout>
